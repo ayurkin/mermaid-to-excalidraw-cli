@@ -1,5 +1,6 @@
 # mermaid-to-excalidraw-cli
 
+[![npm version](https://img.shields.io/npm/v/mermaid-to-excalidraw-cli)](https://www.npmjs.com/package/mermaid-to-excalidraw-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/ayurkin/mermaid-to-excalidraw-cli)](https://github.com/ayurkin/mermaid-to-excalidraw-cli/issues)
 
