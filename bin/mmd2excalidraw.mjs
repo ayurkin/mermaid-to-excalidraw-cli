@@ -24,6 +24,7 @@ Options:
   --curve <linear|basis>    Mermaid flowchart curve (default: ${DEFAULTS.curve})
   --max-edges <number>      Max edges (default: ${DEFAULTS.maxEdges})
   --max-text-size <number>  Max text size (default: ${DEFAULTS.maxTextSize})
+  --install                 Install Playwright Chromium if missing
   -h, --help                Show this help
 
 Notes:
@@ -40,6 +41,7 @@ Examples:
 function parseArgs(argv) {
   const options = { ...DEFAULTS };
   let output = null;
+  let install = false;
   const positionals = [];
 
   for (let i = 0; i < argv.length; i += 1) {
@@ -79,6 +81,11 @@ function parseArgs(argv) {
       continue;
     }
 
+    if (arg === "--install") {
+      install = true;
+      continue;
+    }
+
     if (arg.startsWith("--")) {
       throw new Error(`Unknown option: ${arg}`);
     }
@@ -95,6 +102,7 @@ function parseArgs(argv) {
     input: positionals[0],
     output: output ?? positionals[1] ?? null,
     options,
+    install,
   };
 }
 
@@ -324,13 +332,39 @@ async function convertMermaidFile(page, inputPath, outputPath, options) {
 }
 
 async function run() {
-  const { input, output, options } = parseArgs(process.argv.slice(2));
+  const { input, output, options, install } = parseArgs(process.argv.slice(2));
   const inputPath = path.resolve(process.cwd(), input);
   const outputPath = output ? path.resolve(process.cwd(), output) : null;
 
   const stats = await fs.stat(inputPath);
+  if (install) {
+    const { spawnSync } = await import("node:child_process");
+    const result = spawnSync(
+      process.execPath,
+      ["./node_modules/.bin/playwright", "install", "chromium"],
+      { stdio: "inherit", cwd: getPackageRoot() }
+    );
+    if (result.status !== 0) {
+      throw new Error("Failed to install Playwright Chromium.");
+    }
+  }
+
   const { server, url } = await createServer();
-  const browser = await chromium.launch({ headless: true });
+  let browser;
+  try {
+    browser = await chromium.launch({ headless: true });
+  } catch (error) {
+    const message =
+      error?.message && typeof error.message === "string"
+        ? error.message
+        : String(error);
+    if (message.includes("playwright install")) {
+      throw error;
+    }
+    throw new Error(
+      "Playwright Chromium is not installed. Run `npx playwright install chromium` or re-run with `--install`."
+    );
+  }
   const page = await browser.newPage();
   page.on("console", (msg) => {
     console.log(`[browser:${msg.type()}] ${msg.text()}`);

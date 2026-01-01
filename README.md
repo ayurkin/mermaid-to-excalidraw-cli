@@ -33,6 +33,20 @@ npx playwright install chromium
 npm link
 ```
 
+### One-command setup
+
+```bash
+npm install -g mermaid-to-excalidraw-cli && npx playwright install chromium
+```
+
+### Auto-install from the CLI
+
+If Chromium is missing, you can let the CLI install it:
+
+```bash
+mmd2excalidraw --install docs/architecture
+```
+
 ## Usage
 
 ```bash
@@ -58,6 +72,7 @@ mmd2excalidraw docs/architecture -o docs/architecture
 - `--curve <linear|basis>`: Flowchart curve style (default: linear)
 - `--max-edges <number>`: Max edges (default: 500)
 - `--max-text-size <number>`: Max text size (default: 50000)
+- `--install`: Install Playwright Chromium if missing
 - `-o, --output <path>`: Output file or directory
 - `-h, --help`: Show help
 
