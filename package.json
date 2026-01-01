@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Convert Mermaid (.mmd) to Excalidraw (.excalidraw) using headless Chromium.",
   "license": "MIT",
+  "author": "Aleksandr Yurkin <alx.yurkin@gmail.com>",
   "type": "module",
   "bin": {
     "mmd2excalidraw": "bin/mmd2excalidraw.mjs"
@@ -32,6 +33,9 @@
     "url": "https://github.com/ayurkin/mermaid-to-excalidraw-cli/issues"
   },
   "homepage": "https://github.com/ayurkin/mermaid-to-excalidraw-cli",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=18"
   },

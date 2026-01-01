@@ -1,5 +1,8 @@
 # mermaid-to-excalidraw-cli
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/ayurkin/mermaid-to-excalidraw-cli)](https://github.com/ayurkin/mermaid-to-excalidraw-cli/issues)
+
 Convert Mermaid (`.mmd`) diagrams into Excalidraw (`.excalidraw`) using a headless Chromium runtime for accurate layout and text metrics.
 
 ## Why
@@ -25,6 +28,12 @@ For global usage:
 
 ```bash
 npm link
+```
+
+After publishing to npm:
+
+```bash
+npm install -g mermaid-to-excalidraw-cli
 ```
 
 ## Usage
