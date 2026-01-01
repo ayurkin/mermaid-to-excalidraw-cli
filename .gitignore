@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log*
+.DS_Store
+.env
+.env.*
+
+# Playwright
+playwright-report
+
+# Output
+*.log
+*.tgz
