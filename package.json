@@ -1,6 +1,6 @@
 {
   "name": "mermaid-to-excalidraw-cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Convert Mermaid (.mmd) to Excalidraw (.excalidraw) using headless Chromium.",
   "license": "MIT",
   "author": "Aleksandr Yurkin <alx.yurkin@gmail.com>",
