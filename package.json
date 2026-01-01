@@ -27,7 +27,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:ayurkin/mermaid-to-excalidraw-cli.git"
+    "url": "git+ssh://git@github.com/ayurkin/mermaid-to-excalidraw-cli.git"
   },
   "bugs": {
     "url": "https://github.com/ayurkin/mermaid-to-excalidraw-cli/issues"
