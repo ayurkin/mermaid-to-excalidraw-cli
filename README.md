@@ -21,20 +21,16 @@ Convert Mermaid (`.mmd`) diagrams into Excalidraw (`.excalidraw`) using a headle
 ## Install
 
 ```bash
-npm install
+npm install -g mermaid-to-excalidraw-cli
 npx playwright install chromium
 ```
 
-For global usage:
+For local development:
 
 ```bash
+npm install
+npx playwright install chromium
 npm link
-```
-
-After publishing to npm:
-
-```bash
-npm install -g mermaid-to-excalidraw-cli
 ```
 
 ## Usage

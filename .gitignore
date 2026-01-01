@@ -10,3 +10,6 @@ playwright-report
 # Output
 *.log
 *.tgz
+
+# Generated fixtures
+/test/fixtures/*.excalidraw
